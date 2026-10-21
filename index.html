@@ -1,1 +1,515 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B1F3A">
+  <meta name="description" content="OLIMPIA ավտոդպրոց․ վարորդական դասընթացներ, տեսություն և գործնական վարում Հրազդանում։">
+  <title>OLIMPIA Ավտոդպրոց | Վարորդական դասընթացներ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { primary: '#0B1F3A', accent: '#FFC629', secondary: '#E5E7EB', success: '#22B573', light: '#F9FAFB' },
+        fontFamily: { sans: ['Noto Sans Armenian', 'sans-serif'] }
+      } }
+    };
+  </script>
+  <style>
+    :root { --navy:#0B1F3A; --gold:#FFC629; --gold-dark:#D2A514; --soft:#F7F8FA; --ink:#17263B; --muted:#657184; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:84px; }
+    body { margin:0; font-family:'Noto Sans Armenian',sans-serif; overflow-x:hidden; }
+    a,button { -webkit-tap-highlight-color:transparent; }
+    .section-pad { padding:88px 0; }
+    .section-title { color:var(--navy); font-size:clamp(30px,4vw,44px); font-weight:800; line-height:1.2; letter-spacing:-.035em; }
+    .section-lead { color:var(--muted); font-size:15px; line-height:1.8; }
+    .eyebrow { color:#98750B; font-size:11px; font-weight:800; letter-spacing:.15em; text-transform:uppercase; }
+    .site-nav { background:rgba(11,31,58,.96); backdrop-filter:blur(14px); }
+    .nav-link { position:relative; color:#fff; font-size:13px; font-weight:600; opacity:.88; transition:color .2s,opacity .2s; }
+    .nav-link:hover,.nav-link:focus-visible { color:var(--gold); opacity:1; }
+    .brand-logo { width:54px; height:54px; object-fit:cover; border-radius:50%; border:2px solid rgba(255,198,41,.85); background:white; }
+    .hero { min-height:690px; height:min(880px,100svh); position:relative; display:flex; align-items:center; overflow:hidden; color:white; background:var(--navy); }
+    .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0; }
+    .hero-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(90deg,rgba(5,19,38,.9) 0%,rgba(7,24,47,.72) 52%,rgba(6,20,38,.38) 100%),linear-gradient(0deg,rgba(5,19,38,.35),transparent 55%); }
+    .hero-content { position:relative; z-index:2; padding-top:95px; padding-bottom:65px; }
+    .hero-kicker { display:inline-flex; align-items:center; gap:9px; padding:9px 13px; border:1px solid rgba(255,198,41,.45); border-radius:999px; background:rgba(11,31,58,.46); color:#FFE28A; font-size:11px; font-weight:700; letter-spacing:.06em; }
+    .hero-title { max-width:780px; margin:25px 0 18px; color:#fff; font-size:clamp(40px,6vw,74px); font-weight:800; line-height:1.1; letter-spacing:-.045em; }
+    .hero-title span { color:var(--gold); }
+    .hero-copy { max-width:630px; color:#E4E9F0; font-size:17px; line-height:1.85; }
+    .hero-buttons { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+    .btn-main,.btn-light,.btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:52px; padding:0 23px; border-radius:999px; font-size:13px; font-weight:800; transition:transform .2s,box-shadow .2s,background .2s; cursor:pointer; }
+    .btn-main { border:1px solid var(--gold); color:var(--navy); background:var(--gold); box-shadow:0 10px 24px rgba(255,198,41,.24); }
+    .btn-main:hover { background:#FFDA65; transform:translateY(-2px); box-shadow:0 14px 30px rgba(255,198,41,.35); }
+    .btn-light { border:1px solid white; color:var(--navy); background:white; }
+    .btn-light:hover { transform:translateY(-2px); background:#F1F4F8; }
+    .btn-outline { border:1px solid rgba(255,255,255,.7); color:white; background:rgba(255,255,255,.06); }
+    .btn-outline:hover { color:var(--navy); background:white; transform:translateY(-2px); }
+    .hero-proof { display:flex; flex-wrap:wrap; gap:14px 25px; margin-top:30px; color:#F5F7FA; font-size:12px; font-weight:600; }
+    .hero-proof span { display:inline-flex; align-items:center; gap:8px; }
+    .hero-proof i { color:var(--gold); }
+    .hero-bottom-mark { position:absolute; z-index:2; right:5%; bottom:44px; display:flex; align-items:center; gap:10px; color:rgba(255,255,255,.75); font-size:10px; letter-spacing:.16em; }
+    .hero-bottom-mark::before { width:38px; height:1px; content:''; background:var(--gold); }
+    .stats { position:relative; z-index:3; margin-top:-36px; }
+    .stats-inner { display:grid; grid-template-columns:repeat(4,1fr); overflow:hidden; border:1px solid rgba(11,31,58,.08); border-radius:22px; background:white; box-shadow:0 18px 50px rgba(11,31,58,.12); }
+    .stat { min-height:112px; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:18px; text-align:center; }
+    .stat+.stat { border-left:1px solid #E8ECF1; }
+    .stat strong { color:var(--navy); font-size:28px; font-weight:800; letter-spacing:-.035em; }
+    .stat strong em { color:var(--gold-dark); font-style:normal; }
+    .stat span { margin-top:5px; color:#6C788A; font-size:11px; }
+    .about { background:white; }
+    .about-grid { display:grid; grid-template-columns:.96fr 1.04fr; gap:58px; align-items:center; }
+    .photo-frame { position:relative; padding:0 24px 24px 0; }
+    .photo-frame::before { position:absolute; right:0; bottom:0; width:72%; height:72%; border:3px solid var(--gold); border-radius:20px; content:''; }
+    .photo-frame img { position:relative; display:block; width:100%; height:430px; object-fit:cover; object-position:center; border-radius:20px; box-shadow:0 18px 42px rgba(11,31,58,.15); }
+    .about-copy h2 { margin:11px 0 15px; }
+    .about-copy > p { color:var(--muted); font-size:14px; line-height:1.9; }
+    .benefit-grid { display:grid; grid-template-columns:1fr 1fr; gap:19px 16px; margin-top:25px; }
+    .benefit { display:flex; align-items:flex-start; gap:12px; }
+    .benefit-icon { width:39px; height:39px; flex:0 0 39px; display:grid; place-items:center; border-radius:12px; color:var(--navy); background:#FFF5D1; }
+    .benefit strong { display:block; margin:0 0 4px; color:var(--navy); font-size:12px; }
+    .benefit p { margin:0; color:#788496; font-size:10px; line-height:1.65; }
+    .packages { background:var(--soft); }
+    .package-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:19px; }
+    .package-card { position:relative; display:flex; flex-direction:column; min-height:333px; padding:25px; overflow:hidden; border:1px solid #E7EBF0; border-radius:22px; background:white; box-shadow:0 9px 30px rgba(11,31,58,.055); transition:transform .25s,box-shadow .25s,border-color .25s; }
+    .package-card::after { position:absolute; top:-72px; right:-65px; width:175px; height:175px; border:1px solid rgba(255,198,41,.23); border-radius:50%; box-shadow:0 0 0 17px rgba(255,198,41,.05),0 0 0 34px rgba(255,198,41,.035); content:''; transition:transform .3s; }
+    .package-card:hover { z-index:1; transform:translateY(-7px); border-color:var(--gold); box-shadow:0 22px 46px rgba(11,31,58,.13); }
+    .package-card:hover::after { transform:scale(1.08); }
+    .package-card.popular { border:2px solid var(--gold); box-shadow:0 17px 38px rgba(255,198,41,.15); }
+    .package-badge { position:relative; z-index:1; align-self:flex-start; padding:7px 11px; border-radius:999px; color:#856500; background:#FFF4C7; font-size:9px; font-weight:800; letter-spacing:.08em; }
+    .popular .package-badge { color:var(--navy); background:var(--gold); }
+    .package-card h3 { position:relative; z-index:1; margin:19px 0 7px; color:var(--navy); font-size:21px; font-weight:800; }
+    .package-card .desc { position:relative; z-index:1; min-height:44px; margin:0; color:#687588; font-size:12px; line-height:1.7; }
+    .price { position:relative; z-index:1; display:flex; align-items:baseline; gap:7px; margin:15px 0 13px; color:var(--navy); font-size:31px; font-weight:800; letter-spacing:-.04em; }
+    .price small { color:#6F7B8D; font-size:12px; font-weight:700; }
+    .package-list { position:relative; z-index:1; display:grid; gap:10px; margin:0 0 22px; padding:0; color:#5D6B7F; font-size:11px; list-style:none; }
+    .package-list li { display:flex; align-items:center; gap:9px; }
+    .package-list i { color:#18A96B; font-size:12px; }
+    .choose-package { position:relative; z-index:1; width:100%; min-height:45px; margin-top:auto; border:1.5px solid var(--navy); border-radius:11px; color:var(--navy); background:white; font-weight:800; font-size:12px; transition:all .2s; cursor:pointer; }
+    .choose-package:hover,.popular .choose-package { color:white; background:var(--navy); }
+    .package-footnote { max-width:760px; margin:24px auto 0; color:#7D8998; text-align:center; font-size:10px; line-height:1.7; }
+    .course-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:17px; }
+    .course-card { overflow:hidden; border:1px solid #E8ECF1; border-radius:19px; background:white; box-shadow:0 8px 25px rgba(11,31,58,.06); transition:transform .25s,box-shadow .25s; }
+    .course-card:hover { transform:translateY(-6px); box-shadow:0 20px 38px rgba(11,31,58,.12); }
+    .course-image { position:relative; height:170px; overflow:hidden; background:#E6EAF0; }
+    .course-image img { width:100%; height:100%; object-fit:cover; transition:transform .45s; }
+    .course-card:hover .course-image img { transform:scale(1.07); }
+    .course-image span { position:absolute; top:12px; left:12px; padding:7px 10px; border-radius:999px; color:var(--navy); background:var(--gold); font-size:9px; font-weight:800; }
+    .course-info { padding:17px; }
+    .course-info h3 { min-height:43px; margin:0 0 7px; color:var(--navy); font-size:15px; font-weight:800; line-height:1.4; }
+    .course-info p { min-height:52px; margin:0; color:#687588; font-size:10px; line-height:1.7; }
+    .course-bottom { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:14px; padding-top:12px; border-top:1px solid #EDF0F3; }
+    .course-bottom strong { color:var(--navy); font-size:14px; }
+    .course-bottom a { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; color:var(--navy); background:#FFF3C5; transition:.2s; }
+    .course-bottom a:hover { color:white; background:var(--navy); }
+    .quiz-section { position:relative; overflow:hidden; color:white; background:var(--navy); }
+    .quiz-section::before { position:absolute; inset:0; opacity:.09; background-image:radial-gradient(#fff 1px,transparent 1px); background-size:19px 19px; content:''; }
+    .quiz-grid { position:relative; z-index:1; display:grid; grid-template-columns:1.1fr .9fr; gap:38px; align-items:center; }
+    .quiz-card { padding:33px; border:1px solid rgba(255,255,255,.18); border-radius:26px; background:rgba(255,255,255,.08); backdrop-filter:blur(12px); }
+    .quiz-card h2 { margin:9px 0 10px; color:white; font-size:clamp(26px,3vw,37px); font-weight:800; }
+    .quiz-card > p { color:#CFD7E2; font-size:13px; line-height:1.75; }
+    .quiz-step h3 { margin:24px 0 14px; color:white; font-size:16px; font-weight:700; }
+    .quiz-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .quiz-option { min-height:53px; padding:10px 13px; border:1px solid rgba(255,255,255,.3); border-radius:12px; color:white; background:rgba(255,255,255,.04); text-align:left; font-size:12px; font-weight:600; transition:.2s; cursor:pointer; }
+    .quiz-option:hover { border-color:var(--gold); background:rgba(255,255,255,.09); }
+    .quiz-option.selected { border-color:var(--gold); color:var(--navy); background:var(--gold); }
+    .quiz-controls { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:22px; }
+    .quiz-progress { height:5px; flex:1; overflow:hidden; border-radius:999px; background:rgba(255,255,255,.2); }
+    .quiz-progress span { display:block; width:33.33%; height:100%; border-radius:inherit; background:var(--gold); transition:width .35s; }
+    .quiz-next { min-height:42px; padding:0 17px; border:0; border-radius:999px; color:var(--navy); background:var(--gold); font-size:11px; font-weight:800; cursor:pointer; }
+    .quiz-next:disabled { opacity:.45; cursor:not-allowed; }
+    .quiz-result { display:none; margin-top:22px; padding:21px; border:1px solid rgba(255,198,41,.4); border-radius:17px; background:rgba(255,198,41,.09); }
+    .quiz-result.show { display:block; }
+    .quiz-result h3 { margin:0 0 7px; color:var(--gold); font-size:20px; }
+    .quiz-result p { color:#E4E9F0; font-size:12px; line-height:1.75; }
+    .quiz-picture { position:relative; min-height:430px; }
+    .quiz-picture img { position:absolute; inset:0 0 20px 0; width:100%; height:calc(100% - 20px); object-fit:cover; border-radius:28px; box-shadow:0 22px 55px rgba(0,0,0,.28); }
+    .quiz-picture::after { position:absolute; inset:0 0 20px; border:1px solid rgba(255,255,255,.25); border-radius:28px; content:''; }
+    .quiz-sticker { position:absolute; z-index:1; right:-15px; bottom:0; max-width:205px; padding:17px 19px; border:5px solid var(--navy); border-radius:18px; color:var(--navy); background:var(--gold); font-size:11px; font-weight:800; line-height:1.55; box-shadow:0 14px 30px rgba(0,0,0,.22); }
+    .faq-list { max-width:850px; margin:0 auto; display:grid; gap:11px; }
+    .faq-item { overflow:hidden; border:1px solid #E6EAF0; border-radius:15px; background:white; box-shadow:0 4px 16px rgba(11,31,58,.035); }
+    .faq-item summary { position:relative; padding:18px 54px 18px 21px; color:var(--navy); font-size:13px; font-weight:800; list-style:none; cursor:pointer; }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::after { position:absolute; top:50%; right:19px; width:27px; height:27px; display:grid; place-items:center; border-radius:50%; color:var(--navy); background:#FFF1BD; content:'+'; font-size:17px; transform:translateY(-50%); }
+    .faq-item[open] summary::after { content:'−'; }
+    .faq-item p { margin:0; padding:0 21px 19px; color:#687588; font-size:12px; line-height:1.8; }
+    .contact-section { color:white; background:linear-gradient(120deg,#0B1F3A,#122B4B); }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+    .contact-section .section-title { color:white; }
+    .contact-section .section-lead { color:#C7D1DE; }
+    .contact-details { display:grid; gap:17px; margin-top:25px; }
+    .contact-row { display:flex; align-items:flex-start; gap:13px; }
+    .contact-row i { width:40px; height:40px; flex:0 0 40px; display:grid; place-items:center; border-radius:13px; color:var(--gold); background:rgba(255,198,41,.13); }
+    .contact-row small { display:block; margin-bottom:4px; color:#AEBAC9; font-size:10px; }
+    .contact-row a,.contact-row strong { color:white; font-size:13px; font-weight:700; }
+    .contact-row a:hover { color:var(--gold); }
+    .contact-card { padding:26px; border:1px solid rgba(255,255,255,.15); border-radius:22px; background:rgba(255,255,255,.06); }
+    .contact-card h3 { margin:0 0 16px; color:white; font-size:19px; }
+    .contact-card p { color:#C7D1DE; font-size:12px; line-height:1.8; }
+    .contact-socials { display:flex; gap:10px; margin-top:18px; }
+    .contact-socials a { width:43px; height:43px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.22); border-radius:50%; color:white; transition:.2s; }
+    .contact-socials a:hover { border-color:var(--gold); color:var(--navy); background:var(--gold); }
+    footer { padding:24px 0; color:#B5C0CF; background:#071629; font-size:10px; }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .footer-logo { display:flex; align-items:center; gap:10px; color:white; font-weight:800; font-size:14px; }
+    .footer-logo img { width:38px; height:38px; object-fit:cover; border-radius:50%; background:white; }
+    .float-contact { position:fixed; z-index:40; right:20px; bottom:20px; width:57px; height:57px; display:grid; place-items:center; border:4px solid white; border-radius:50%; color:var(--navy); background:var(--gold); box-shadow:0 10px 25px rgba(0,0,0,.23); font-size:23px; transition:transform .2s; }
+    .float-contact:hover { transform:translateY(-4px) scale(1.04); }
+    .to-top { position:fixed; z-index:39; right:25px; bottom:88px; width:45px; height:45px; display:grid; place-items:center; border:0; border-radius:50%; color:white; background:rgba(11,31,58,.85); box-shadow:0 7px 18px rgba(0,0,0,.15); cursor:pointer; transition:.2s; }
+    .to-top:hover { color:var(--navy); background:var(--gold); }
+    .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    @media(max-width:1000px) {
+      .nav-links { gap:16px; }
+      .nav-link { font-size:11px; }
+      .phone-nav { display:none; }
+      .package-grid { grid-template-columns:repeat(2,1fr); }
+      .course-grid { grid-template-columns:repeat(2,1fr); }
+      .about-grid { gap:35px; }
+    }
+    @media(max-width:767px) {
+      .section-pad { padding:68px 0; }
+      .container { width:min(100% - 32px,560px); }
+      .nav-wrap { min-height:70px; }
+      .brand-logo { width:46px; height:46px; }
+      .brand-name { font-size:16px!important; }
+      .nav-menu { position:absolute; top:100%; left:0; right:0; display:none; flex-direction:column; align-items:stretch; gap:0; padding:8px 22px 15px; background:#0B1F3A; box-shadow:0 16px 24px rgba(0,0,0,.15); }
+      .nav-menu.open { display:flex; }
+      .nav-link { padding:12px 0; border-bottom:1px solid rgba(255,255,255,.12); font-size:13px; }
+      .menu-toggle { display:grid!important; place-items:center; }
+      .nav-cta { display:none!important; }
+      .hero { min-height:680px; height:auto; }
+      .hero-overlay { background:linear-gradient(90deg,rgba(5,19,38,.88),rgba(7,24,47,.58)),linear-gradient(0deg,rgba(5,19,38,.55),transparent); }
+      .hero-content { padding-top:120px; padding-bottom:95px; }
+      .hero-title { font-size:clamp(39px,11vw,58px); }
+      .hero-copy { font-size:14px; }
+      .hero-buttons { align-items:stretch; flex-direction:column; max-width:340px; }
+      .hero-buttons .btn-main,.hero-buttons .btn-outline { width:100%; }
+      .hero-proof { gap:12px 17px; font-size:10px; }
+      .hero-bottom-mark { right:20px; bottom:27px; font-size:8px; }
+      .stats { margin-top:-24px; }
+      .stats-inner { grid-template-columns:1fr 1fr; }
+      .stat { min-height:95px; padding:13px 8px; }
+      .stat+.stat { border-left:0; }
+      .stat:nth-child(even) { border-left:1px solid #E8ECF1; }
+      .stat:nth-child(n+3) { border-top:1px solid #E8ECF1; }
+      .stat strong { font-size:23px; }
+      .about-grid,.quiz-grid,.contact-grid { grid-template-columns:1fr; gap:30px; }
+      .photo-frame img { height:330px; }
+      .benefit-grid { gap:16px 10px; }
+      .package-grid { grid-template-columns:1fr; gap:13px; }
+      .package-card { min-height:300px; padding:23px; }
+      .course-grid { grid-template-columns:1fr; gap:13px; }
+      .course-card { display:grid; grid-template-columns:38% 1fr; min-height:154px; }
+      .course-image { height:100%; min-height:154px; }
+      .course-info { display:flex; flex-direction:column; padding:13px; }
+      .course-info h3 { min-height:unset; font-size:12px; }
+      .course-info p { min-height:unset; font-size:9px; }
+      .course-bottom { margin-top:auto; padding-top:9px; }
+      .course-bottom strong { font-size:12px; }
+      .quiz-card { padding:23px 19px; }
+      .quiz-picture { min-height:300px; }
+      .quiz-options { grid-template-columns:1fr; }
+      .contact-card { padding:20px; }
+      .footer-inner { flex-direction:column; text-align:center; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; }
+      .reveal { opacity:1; transform:none; }
+    }
+  </style>
+</head>
+<body class="bg-light text-gray-800">
+  <nav class="site-nav fixed top-0 w-full z-50 shadow-lg" id="navbar">
+    <div class="container mx-auto px-4 nav-wrap py-3 flex justify-between items-center gap-5">
+      <a href="#home" class="flex items-center gap-3 shrink-0" aria-label="OLIMPIA ավտոդպրոց՝ գլխավոր էջ">
+        <img src="https://cdn.shopify.com/s/files/1/0603/3021/3434/files/10c23490-8f3c-49ce-b7d8-44d5de587aec.jpg?v=1792609461" alt="OLIMPIA Ավտոդպրոց լոգո" class="brand-logo">
+        <span class="brand-name text-white font-bold text-xl tracking-wide">OLIMPIA<small class="block text-accent text-[9px] tracking-[.22em]">AUTO SCHOOL</small></span>
+      </a>
+      <div class="nav-menu hidden md:flex items-center gap-7" id="navMenu">
+        <a href="#about" class="nav-link">Մեր մասին</a>
+        <a href="#packages" class="nav-link">Փաթեթներ</a>
+        <a href="#courses" class="nav-link">Դասընթացներ</a>
+        <a href="#quiz" class="nav-link">Թեստ</a>
+        <a href="#faq" class="nav-link">ՀՏՀ</a>
+        <a href="#contact" class="nav-link">Կապ</a>
+      </div>
+      <div class="flex items-center gap-4 shrink-0">
+        <a class="phone-nav text-white text-xs font-bold" href="tel:+37498787219">+374 (98) 78-72-19</a>
+        <a href="#contact" class="nav-cta bg-accent text-primary font-bold py-3 px-6 rounded-full hover:bg-white transition shadow-lg text-xs">Գրանցվել <i class="fa-solid fa-arrow-right ml-2"></i></a>
+        <button class="menu-toggle hidden w-10 h-10 rounded-full border border-white/30 text-white bg-white/5" id="menuToggle" aria-label="Բացել ցանկը" aria-expanded="false" type="button"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
 
+  <header class="hero" id="home">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/olimpia-fleet.jpg" aria-label="OLIMPIA ավտոդպրոցի ուսումնական մեքենաները">
+      <source src="https://cdn.shopify.com/videos/c/o/v/0eb5bd3eefa44d6691f0f4ed2567e998.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="container mx-auto px-4 hero-content">
+      <div class="max-w-3xl reveal">
+        <span class="hero-kicker"><i class="fa-solid fa-location-dot"></i> ՀՐԱԶԴԱՆ · OLIMPIA AUTO SCHOOL</span>
+        <h1 class="hero-title">Վարորդական վկայական՝ <span>առանց սթրեսի և վախի</span></h1>
+        <p class="hero-copy">Սովորեք վարել վստահ՝ հասկանալի տեսությամբ, անհատական մոտեցմամբ և գործնական դասերով քաղաքային ճանապարհներին։</p>
+        <div class="hero-buttons">
+          <a href="#quiz" class="btn-main">Անցնել կարճ թեստը <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#packages" class="btn-outline">Տեսնել փաթեթներն ու գները <i class="fa-solid fa-chevron-down"></i></a>
+        </div>
+        <div class="hero-proof">
+          <span><i class="fa-solid fa-circle-check"></i> Ժամանակակից ուսումնական մեքենաներ</span>
+          <span><i class="fa-solid fa-circle-check"></i> Ճկուն գրաֆիկ</span>
+          <span><i class="fa-solid fa-circle-check"></i> Տեսություն՝ լսարանում կամ առցանց</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bottom-mark">ՎՍՏԱՀՈՒԹՅՈՒՆԸ ՍԿՍՎՈՒՄ Է ԱՌԱՋԻՆ ԴԱՍԻՑ</div>
+  </header>
+
+  <section class="stats" aria-label="Օլիմպիա ավտոդպրոցի տվյալները">
+    <div class="container mx-auto px-4">
+      <div class="stats-inner">
+        <div class="stat"><strong><em>2k+</em></strong><span>Ուսուցանված աշակերտ</span></div>
+        <div class="stat"><strong>63</strong><span>Ուսումնական թեստ</span></div>
+        <div class="stat"><strong>4</strong><span>Հրահանգիչ և մասնագետ</span></div>
+        <div class="stat"><strong>09:00–18:00</strong><span>Ամենօրյա աշխատանքային ժամեր</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about section-pad">
+    <div class="container mx-auto px-4 about-grid">
+      <div class="photo-frame reveal">
+        <img src="assets/olimpia-fleet.jpg" alt="OLIMPIA ավտոդպրոցի ուսումնական մեքենաները">
+      </div>
+      <div class="about-copy reveal">
+        <span class="eyebrow">ՄԵՐ ՄԱՍԻՆ</span>
+        <h2 class="section-title">Վարել սովորիր վստահ, հանգիստ և անվտանգ</h2>
+        <p>OLIMPIA Auto School-ում ուսուցումը կառուցված է սովորողի շուրջ։ Համադրում ենք հասկանալի տեսությունը, քաղաքային երթուղիներով վարումն ու հրահանգչի անհատական աջակցությունը՝ քննությանը պատրաստվելու և ղեկին վստահ զգալու համար։</p>
+        <div class="benefit-grid">
+          <div class="benefit"><span class="benefit-icon"><i class="fa-solid fa-book-open"></i></span><div><strong>Ճկուն տեսություն</strong><p>Մասնակցեք դասերին լսարանում կամ առցանց։</p></div></div>
+          <div class="benefit"><span class="benefit-icon"><i class="fa-solid fa-road"></i></span><div><strong>Պրակտիկա քաղաքում</strong><p>Վարեք քաղաքային ճանապարհներին հրահանգչի հետ։</p></div></div>
+          <div class="benefit"><span class="benefit-icon"><i class="fa-regular fa-calendar-check"></i></span><div><strong>Հարմար գրաֆիկ</strong><p>Ընտրեք դասերի օրերն ու ժամերը։</p></div></div>
+          <div class="benefit"><span class="benefit-icon"><i class="fa-solid fa-laptop"></i></span><div><strong>Առցանց թեստեր</strong><p>Պատրաստվեք ՀՀ երթևեկության կանոնների թեստերով։</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages" class="packages section-pad">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow">ԸՆՏՐԻՐ ՔՈ ՈՒՍՈՒՑՄԱՆ ԾՐԱԳԻՐԸ</span>
+        <h2 class="section-title mt-3 mb-3">Ուսուցման փաթեթներ</h2>
+        <p class="section-lead">Փաթեթները տարբերվում են գործնական վարելու ժամերի քանակով։ Ընտրեք ձեզ հարմար տարբերակը։</p>
+      </div>
+      <div class="package-grid">
+        <article class="package-card reveal">
+          <span class="package-badge">ՄԵԿՆԱՐԿԱՅԻՆ</span><h3>Հիմնական</h3><p class="desc">Տեսություն և վարման 5 ժամ։</p><div class="price">45 000 <small>֏</small></div>
+          <ul class="package-list"><li><i class="fa-solid fa-check"></i> Տեսական դասընթաց</li><li><i class="fa-solid fa-check"></i> Վարման 5 ժամ</li></ul>
+          <button class="choose-package" type="button" data-package="Հիմնական — 45 000 ֏">Ընտրել փաթեթը <i class="fa-solid fa-arrow-right ml-2"></i></button>
+        </article>
+        <article class="package-card reveal">
+          <span class="package-badge">ԱՎԵԼԻ ՇԱՏ ՊՐԱԿՏԻԿԱ</span><h3>Ընդհանուր</h3><p class="desc">Տեսություն և վարման 7 ժամ։</p><div class="price">55 000 <small>֏</small></div>
+          <ul class="package-list"><li><i class="fa-solid fa-check"></i> Տեսական դասընթաց</li><li><i class="fa-solid fa-check"></i> Վարման 7 ժամ</li></ul>
+          <button class="choose-package" type="button" data-package="Ընդհանուր — 55 000 ֏">Ընտրել փաթեթը <i class="fa-solid fa-arrow-right ml-2"></i></button>
+        </article>
+        <article class="package-card popular reveal">
+          <span class="package-badge">ՀԱՆՐԱՃԱՆԱՉ ԸՆՏՐՈՒԹՅՈՒՆ</span><h3>Ստանդարտ</h3><p class="desc">Տեսություն և վարման 10 ժամ։</p><div class="price">65 000 <small>֏</small></div>
+          <ul class="package-list"><li><i class="fa-solid fa-check"></i> Տեսական դասընթաց</li><li><i class="fa-solid fa-check"></i> Վարման 10 ժամ</li></ul>
+          <button class="choose-package" type="button" data-package="Ստանդարտ — 65 000 ֏">Ընտրել փաթեթը <i class="fa-solid fa-arrow-right ml-2"></i></button>
+        </article>
+        <article class="package-card reveal">
+          <span class="package-badge">ԽՈՐԱՑՎԱԾ ՊՐԱԿՏԻԿԱ</span><h3>Պրեմիում</h3><p class="desc">Տեսություն և վարման 14 ժամ։</p><div class="price">85 000 <small>֏</small></div>
+          <ul class="package-list"><li><i class="fa-solid fa-check"></i> Տեսական դասընթաց</li><li><i class="fa-solid fa-check"></i> Վարման 14 ժամ</li></ul>
+          <button class="choose-package" type="button" data-package="Պրեմիում — 85 000 ֏">Ընտրել փաթեթը <i class="fa-solid fa-arrow-right ml-2"></i></button>
+        </article>
+        <article class="package-card reveal">
+          <span class="package-badge">ԱՎԵԼԻ ՇԱՏ ԺԱՄԵՐ</span><h3>VIP</h3><p class="desc">Տեսություն և վարման 18 ժամ։</p><div class="price">100 000 <small>֏</small></div>
+          <ul class="package-list"><li><i class="fa-solid fa-check"></i> Տեսական դասընթաց</li><li><i class="fa-solid fa-check"></i> Վարման 18 ժամ</li></ul>
+          <button class="choose-package" type="button" data-package="VIP — 100 000 ֏">Ընտրել փաթեթը <i class="fa-solid fa-arrow-right ml-2"></i></button>
+        </article>
+        <article class="package-card reveal">
+          <span class="package-badge">ՏԵՍԱԿԱՆ ԴԱՍԸՆԹԱՑ</span><h3>Միայն տեսություն</h3><p class="desc">Ամբողջական տեսական դասընթաց՝ առանց գործնական վարման։</p><div class="price">30 000 <small>֏</small></div>
+          <ul class="package-list"><li><i class="fa-solid fa-check"></i> Տեսական դասընթաց</li><li><i class="fa-solid fa-minus"></i> Առանց վարման ժամերի</li></ul>
+          <button class="choose-package" type="button" data-package="Միայն տեսություն — 30 000 ֏">Ընտրել փաթեթը <i class="fa-solid fa-arrow-right ml-2"></i></button>
+        </article>
+      </div>
+      <p class="package-footnote">Գները և վարման ժամերը վերցված են OLIMPIA Auto School-ի պաշտոնական կայքից։ Վճարման տարբերակները և պայմանները ճշտվում են գրանցման պահին։</p>
+    </div>
+  </section>
+
+  <section id="courses" class="section-pad bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow">ԴԱՍԸՆԹԱՑՆԵՐ</span><h2 class="section-title mt-3 mb-3">Ուսուցում՝ ըստ քո նպատակի</h2>
+        <p class="section-lead">Սկսում եք զրոյից, ուզում եք վերականգնել հմտությունները, թե պատրաստվել քննությանը՝ ընտրեք ձեզ համապատասխան դասընթացը։</p>
+      </div>
+      <div class="course-grid">
+        <article class="course-card reveal"><div class="course-image"><img src="assets/olimpia-banner-cars.jpg" alt="OLIMPIA ուսումնական մեքենա" loading="lazy"><span>B ԿԱՐԳ</span></div><div class="course-info"><h3>Հիմնական դասընթաց</h3><p>B կարգի ուսուցում՝ սկզբից մինչև քննության պատրաստվելը։</p><div class="course-bottom"><strong>45 000 ֏</strong><a href="#contact" aria-label="Հարցնել հիմնական դասընթացի մասին"><i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+        <article class="course-card reveal"><div class="course-image"><img src="assets/olimpia-fleet.jpg" alt="OLIMPIA ուսումնական մեքենաների պարկ" loading="lazy"><span>ՀՄՏՈՒԹՅՈՒՆՆԵՐ</span></div><div class="course-info"><h3>Հմտությունների վերականգնում</h3><p>Վարորդական իրավունք ունեցող անձանց համար՝ վարելու հմտությունները վերականգնելու նպատակով։</p><div class="course-bottom"><strong>35 000 ֏</strong><a href="#contact" aria-label="Հարցնել հմտությունների վերականգնման մասին"><i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+        <article class="course-card reveal"><div class="course-image"><img src="assets/olimpia-theory.jpg" alt="Երթևեկության կանոնների տեսական ուսուցում" loading="lazy"><span>ՔՆՆՈՒԹՅՈՒՆ</span></div><div class="course-info"><h3>Արագացված պատրաստում</h3><p>Նպատակային պատրաստում ՀՀ տեսական քննությանը և Հրազդանի երթուղիներին։</p><div class="course-bottom"><strong>40 000 ֏</strong><a href="#contact" aria-label="Հարցնել արագացված պատրաստման մասին"><i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+        <article class="course-card reveal"><div class="course-image"><img src="assets/olimpia-fleet.jpg" alt="Անհատական գործնական վարում" loading="lazy"><span>ԱՆՀԱՏԱԿԱՆ</span></div><div class="course-info"><h3>Անհատական դասեր</h3><p>Անհատական ծրագիր՝ ձեր փորձին և նպատակներին համապատասխան։</p><div class="course-bottom"><strong>5 000 ֏ <small class="font-normal text-gray-500">/ դաս</small></strong><a href="#contact" aria-label="Հարցնել անհատական դասերի մասին"><i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="quiz-section section-pad">
+    <div class="container mx-auto px-4 quiz-grid">
+      <div class="quiz-card reveal">
+        <span class="eyebrow text-accent">ԿԱՐՃ ԹԵՍՏ</span>
+        <h2>Ո՞ր ծրագիրն է քեզ հարմար</h2>
+        <p>Պատասխանիր երկու հարցի և տես՝ ինչից կարող ես սկսել։</p>
+        <div class="quiz-step" data-step="1">
+          <h3>1. Ի՞նչ փոխանցման տուփով ես ուզում սովորել:</h3>
+          <div class="quiz-options">
+            <button type="button" class="quiz-option" data-answer="gearbox" data-value="Մեխանիկական"><i class="fa-solid fa-gears text-accent mr-2"></i> Մեխանիկական</button>
+            <button type="button" class="quiz-option" data-answer="gearbox" data-value="Ավտոմատ"><i class="fa-solid fa-bolt text-accent mr-2"></i> Ավտոմատ</button>
+          </div>
+        </div>
+        <div class="quiz-step hidden" data-step="2">
+          <h3>2. Ինչպիսի՞ն է քո վարելու փորձը:</h3>
+          <div class="quiz-options">
+            <button type="button" class="quiz-option" data-answer="experience" data-value="Սկսում եմ զրոյից">Սկսում եմ զրոյից</button>
+            <button type="button" class="quiz-option" data-answer="experience" data-value="Ուզում եմ վերականգնել հմտություններս">Ուզում եմ վերականգնել հմտություններս</button>
+          </div>
+        </div>
+        <div class="quiz-result" id="quizResult" aria-live="polite">
+          <h3><i class="fa-solid fa-circle-check mr-2"></i>Քո հաջորդ քայլը</h3>
+          <p id="quizResultText"></p>
+          <a href="#packages" class="btn-main mt-2">Տեսնել փաթեթները <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="quiz-controls" id="quizControls">
+          <div class="quiz-progress"><span id="quizProgress"></span></div>
+          <button type="button" class="quiz-next" id="quizNext" disabled>Շարունակել <i class="fa-solid fa-arrow-right ml-1"></i></button>
+        </div>
+      </div>
+      <div class="quiz-picture reveal">
+        <img src="assets/olimpia-theory.jpg" alt="Երթևեկության կանոնների ուսումնասիրման նյութեր" loading="lazy">
+        <div class="quiz-sticker">ՊԱՏՐԱՍՏՎԻՐ ՀՀ ԵՐԹԵՎԵԿՈՒԹՅԱՆ ԿԱՆՈՆՆԵՐԻ ԹԵՍՏԵՐՈՎ</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section-pad bg-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal"><span class="eyebrow">ՀԱՐՑԵՐ ԵՎ ՊԱՏԱՍԽԱՆՆԵՐ</span><h2 class="section-title mt-3 mb-3">Հաճախ տրվող հարցեր</h2><p class="section-lead">Ամենակարևոր տեղեկությունները՝ ուսուցումը սկսելուց առաջ։</p></div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary>Ո՞ր տարիքից կարելի է սկսել ուսուցումը:</summary><p>Ուսուցումը կարելի է սկսել 16 տարեկանից, իսկ B կարգի քննություն հանձնել և վարորդական իրավունք ստանալ՝ 18 տարեկանից։</p></details>
+        <details class="faq-item reveal"><summary>Որքա՞ն է տևում B կարգի ուսուցումը:</summary><p>Ուսուցումը սովորաբար տևում է 2.5–3 ամիս՝ կախված գրաֆիկից և գործնական դասերի հաճախականությունից։</p></details>
+        <details class="faq-item reveal"><summary>Ի՞նչ փաստաթղթեր են անհրաժեշտ գրանցվելու համար:</summary><p>Անձնագիր կամ ID քարտ, հանրային ծառայությունների համար և 3×4 լուսանկար։ Անհրաժեշտ բժշկական փաստաթղթերի մասին կտեղեկացնենք։</p></details>
+        <details class="faq-item reveal"><summary>Հնարավո՞ր է վճարել մասերով:</summary><p>Մասերով վճարելու հնարավորությունն ու ժամանակացույցը քննարկվում են գրանցման պահին։ Վերջնական արժեքը կախված է ընտրված փաթեթից։</p></details>
+        <details class="faq-item reveal"><summary>Կարելի՞ է տեսությունը սովորել առցանց:</summary><p>Այո, տեսական դասերին կարելի է մասնակցել լսարանում կամ առցանց հարթակով։ Գործնական վարումը կատարվում է ուսումնական մեքենայով։</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section section-pad">
+    <div class="container mx-auto px-4 contact-grid">
+      <div class="reveal">
+        <span class="eyebrow text-accent">ԿԱՊ ՄԵԶ ՀԵՏ</span>
+        <h2 class="section-title mt-3 mb-4">Պատրա՞ստ ես սկսել</h2>
+        <p class="section-lead">Զանգահարիր մեզ՝ դասընթացների, փաթեթների և գրանցման պայմանների մասին խորհրդակցելու համար։</p>
+        <div id="chosenPackage" class="hidden mt-5 px-4 py-3 rounded-xl border border-accent/40 bg-white/5 text-accent text-sm" aria-live="polite"></div>
+        <div class="contact-details">
+          <div class="contact-row"><i class="fa-solid fa-location-dot"></i><div><small>ՀԱՍՑԵ</small><strong>Հրազդան, Հայաստանի Հանրապետություն</strong></div></div>
+          <div class="contact-row"><i class="fa-solid fa-phone"></i><div><small>ՀԵՌԱԽՈՍ</small><a href="tel:+37498787219">+374 (98) 78-72-19</a></div></div>
+          <div class="contact-row"><i class="fa-regular fa-clock"></i><div><small>ԱՇԽԱՏԱՆՔԱՅԻՆ ԺԱՄԵՐ</small><strong>Ամեն օր՝ 09:00–18:00</strong></div></div>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-7">
+          <a href="tel:+37498787219" class="btn-main">Զանգահարել <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="https://t.me/olimpiaautoschool" target="_blank" rel="noopener noreferrer" class="btn-outline">Գրել Telegram-ում <i class="fa-brands fa-telegram"></i></a>
+        </div>
+      </div>
+      <div class="contact-card reveal">
+        <h3>Քո ճանապարհը սկսվում է այստեղ</h3>
+        <p>Փաթեթ ընտրիր վերևում կամ կապվիր մեզ հետ՝ անհատական խորհրդատվության համար։ Կօգնենք գտնել քեզ հարմար դասընթացն ու ժամանակացույցը։</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Hrazdan%2C+Armenia" target="_blank" rel="noopener noreferrer" class="btn-light mt-3">Գտնել Հրազդանում <i class="fa-solid fa-map-location-dot"></i></a>
+        <div class="contact-socials">
+          <a href="https://instagram.com/olimpiaautoschool" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://t.me/olimpiaautoschool" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+          <a href="https://facebook.com/share/1BoVBWsbCE/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://olimpiaautoschool.com/lang/ha/index.html" target="_blank" rel="noopener noreferrer" aria-label="Պաշտոնական կայք"><i class="fa-solid fa-globe"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container mx-auto px-4 footer-inner">
+      <a href="#home" class="footer-logo"><img src="https://cdn.shopify.com/s/files/1/0603/3021/3434/files/10c23490-8f3c-49ce-b7d8-44d5de587aec.jpg?v=1792609461" alt=""> OLIMPIA ԱՎՏՈԴՊՐՈՑ</a>
+      <span>© 2026 OLIMPIA Auto School։ Բոլոր իրավունքները պաշտպանված են։</span>
+      <a href="#home" class="hover:text-accent transition">Վերադառնալ վերև <i class="fa-solid fa-arrow-up ml-1"></i></a>
+    </div>
+  </footer>
+  <button class="to-top" id="toTop" type="button" aria-label="Վերադառնալ էջի վերև"><i class="fa-solid fa-arrow-up"></i></button>
+  <a class="float-contact" href="tel:+37498787219" aria-label="Զանգահարել OLIMPIA ավտոդպրոցին"><i class="fa-solid fa-phone"></i></a>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    menuToggle.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Փակել ցանկը' : 'Բացել ցանկը');
+    });
+    navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    document.querySelectorAll('.choose-package').forEach(button => button.addEventListener('click', () => {
+      const selected = document.getElementById('chosenPackage');
+      selected.textContent = `Ընտրված է՝ ${button.dataset.package}։ Զանգահարեք գրանցումը շարունակելու համար։`;
+      selected.classList.remove('hidden');
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }));
+
+    const quizAnswers = {};
+    let currentStep = 1;
+    const nextButton = document.getElementById('quizNext');
+    const progress = document.getElementById('quizProgress');
+    document.querySelectorAll('.quiz-option').forEach(button => button.addEventListener('click', () => {
+      const siblings = button.parentElement.querySelectorAll('.quiz-option');
+      siblings.forEach(item => item.classList.remove('selected'));
+      button.classList.add('selected');
+      quizAnswers[button.dataset.answer] = button.dataset.value;
+      nextButton.disabled = false;
+    }));
+    nextButton.addEventListener('click', () => {
+      document.querySelector(`.quiz-step[data-step="${currentStep}"]`).classList.add('hidden');
+      if (currentStep === 1) {
+        currentStep = 2;
+        document.querySelector('.quiz-step[data-step="2"]').classList.remove('hidden');
+        progress.style.width = '66.66%';
+        nextButton.disabled = true;
+        nextButton.innerHTML = 'Ստանալ առաջարկը <i class="fa-solid fa-arrow-right ml-1"></i>';
+        return;
+      }
+      progress.style.width = '100%';
+      nextButton.classList.add('hidden');
+      document.getElementById('quizControls').classList.add('hidden');
+      const recovery = quizAnswers.experience === 'Ուզում եմ վերականգնել հմտություններս';
+      document.getElementById('quizResultText').textContent = recovery
+        ? `Քո նշած նպատակի համար դիտարկիր «Հմտությունների վերականգնում» դասընթացը՝ 35 000 ֏-ից։ Փոխանցման տուփի նախընտրությունը՝ ${quizAnswers.gearbox.toLowerCase()}։`
+        : `Եթե սկսում ես զրոյից, նայիր «Հիմնական» կամ «Ստանդարտ» փաթեթները՝ 45 000 ֏-ից։ Փոխանցման տուփի նախընտրությունը՝ ${quizAnswers.gearbox.toLowerCase()}։`;
+      document.getElementById('quizResult').classList.add('show');
+    });
+
+    document.getElementById('toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+  </script>
+</body>
+</html>
