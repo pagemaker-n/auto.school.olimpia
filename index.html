@@ -96,6 +96,7 @@
     .course-card { overflow:hidden; border:1px solid #E8ECF1; border-radius:19px; background:white; box-shadow:0 8px 25px rgba(11,31,58,.06); transition:transform .25s,box-shadow .25s; }
     .course-card:hover { transform:translateY(-6px); box-shadow:0 20px 38px rgba(11,31,58,.12); }
     .course-image { position:relative; height:190px; display:grid; place-items:center; overflow:hidden; background:linear-gradient(135deg,#E8EDF3,#F9FAFB); }
+    .course-image.main-course-image { height:220px; }
     .course-image img { width:100%; height:100%; padding:8px; object-fit:contain; transition:transform .45s; }
     .course-card:hover .course-image img { transform:scale(1.03); }
     .course-image span { position:absolute; top:12px; left:12px; padding:7px 10px; border-radius:999px; color:var(--navy); background:var(--gold); font-size:9px; font-weight:800; }
@@ -106,6 +107,8 @@
     .course-bottom strong { color:var(--navy); font-size:14px; }
     .course-bottom a { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; color:var(--navy); background:#FFF3C5; transition:.2s; }
     .course-bottom a:hover { color:white; background:var(--navy); }
+    .online-test-frame-wrap { overflow:hidden; border:1px solid #E6EAF0; border-radius:22px; background:white; box-shadow:0 12px 34px rgba(11,31,58,.09); }
+    .online-test-frame { display:block; width:100%; height:950px; border:0; background:white; }
     .quiz-section { position:relative; overflow:hidden; color:white; background:var(--navy); }
     .quiz-section::before { position:absolute; inset:0; opacity:.09; background-image:radial-gradient(#fff 1px,transparent 1px); background-size:19px 19px; content:''; }
     .quiz-grid { position:relative; z-index:1; display:grid; grid-template-columns:1.1fr .9fr; gap:38px; align-items:center; }
@@ -204,8 +207,10 @@
       .package-grid { grid-template-columns:1fr; gap:13px; }
       .package-card { min-height:300px; padding:23px; }
       .course-grid { grid-template-columns:1fr; gap:13px; }
+      .online-test-frame { height:850px; }
       .course-card { display:grid; grid-template-columns:38% 1fr; min-height:154px; }
       .course-image { height:100%; min-height:154px; }
+      .course-image.main-course-image { height:100%; min-height:154px; }
       .course-info { display:flex; flex-direction:column; padding:13px; }
       .course-info h3 { min-height:unset; font-size:12px; }
       .course-info p { min-height:unset; font-size:9px; }
@@ -234,6 +239,7 @@
         <a href="#about" class="nav-link">Մեր մասին</a>
         <a href="#packages" class="nav-link">Փաթեթներ</a>
         <a href="#courses" class="nav-link">Դասընթացներ</a>
+        <a href="#online-tests" class="nav-link">Առցանց թեստեր</a>
         <a href="#quiz" class="nav-link">Թեստ</a>
         <a href="#faq" class="nav-link">ՀՏՀ</a>
         <a href="#contact" class="nav-link">Կապ</a>
@@ -259,6 +265,7 @@
         <div class="hero-buttons">
           <a href="#quiz" class="btn-main">Անցնել կարճ թեստը <i class="fa-solid fa-arrow-right"></i></a>
           <a href="#packages" class="btn-outline">Տեսնել փաթեթներն ու գները <i class="fa-solid fa-chevron-down"></i></a>
+          <a href="#online-tests" class="btn-outline">Պատրաստվիր ՀՀ երթևեկության կանոնների թեստերով <i class="fa-solid fa-book-open"></i></a>
         </div>
         <div class="hero-proof">
           <span><i class="fa-solid fa-circle-check"></i> Ժամանակակից ուսումնական մեքենաներ</span>
@@ -350,9 +357,23 @@
         <p class="section-lead">Սկսում եք զրոյից, ուզում եք վերականգնել հմտությունները, թե պատրաստվել քննությանը՝ ընտրեք ձեզ համապատասխան դասընթացը։</p>
       </div>
       <div class="course-grid">
-        <article class="course-card reveal"><div class="course-image"><img src="./assets/olimpia-banner-cars.jpg" onerror="this.onerror=null;this.src='https://cdn.shopify.com/s/files/1/0603/3021/3434/files/0c00d8c3-b8b1-4d86-a0df-5c5feed627e5.jpg?v=1792612023'" alt="OLIMPIA ուսումնական մեքենա" loading="lazy"><span>B ԿԱՐԳ</span></div><div class="course-info"><h3>Հիմնական դասընթաց</h3><p>B կարգի ուսուցում՝ սկզբից մինչև քննության պատրաստվելը։</p><div class="course-bottom"><strong>45 000 ֏</strong><a href="#contact" aria-label="Հարցնել հիմնական դասընթացի մասին"><i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+        <article class="course-card reveal"><div class="course-image main-course-image"><img src="https://cdn.shopify.com/s/files/1/0603/3021/3434/files/0c00d8c3-b8b1-4d86-a0df-5c5feed627e5.jpg?v=1792612023" alt="OLIMPIA ուսումնական մեքենա" loading="lazy"><span>B ԿԱՐԳ</span></div><div class="course-info"><h3>Հիմնական դասընթաց</h3><p>B կարգի ուսուցում՝ սկզբից մինչև քննության պատրաստվելը։</p><div class="course-bottom"><strong>45 000 ֏</strong><a href="#contact" aria-label="Հարցնել հիմնական դասընթացի մասին"><i class="fa-solid fa-arrow-right"></i></a></div></div></article>
         <article class="course-card reveal"><div class="course-image"><img src="./assets/olimpia-fleet.jpg" onerror="this.onerror=null;this.src='https://cdn.shopify.com/s/files/1/0603/3021/3434/files/7a44c83f-42a7-4977-9ac5-93066cb47293.jpg?v=1792612022'" alt="OLIMPIA ուսումնական մեքենաների պարկ" loading="lazy"><span>ՀՄՏՈՒԹՅՈՒՆՆԵՐ</span></div><div class="course-info"><h3>Հմտությունների վերականգնում</h3><p>Վարորդական իրավունք ունեցող անձանց համար․ փաթեթը ներառում է 10 դաս՝ վարելու հմտությունները վերականգնելու համար։</p><div class="course-bottom"><strong>50 000 ֏</strong><a href="#contact" aria-label="Հարցնել հմտությունների վերականգնման մասին"><i class="fa-solid fa-arrow-right"></i></a></div></div></article>
         <article class="course-card reveal"><div class="course-image"><img src="./assets/olimpia-fleet.jpg" onerror="this.onerror=null;this.src='https://cdn.shopify.com/s/files/1/0603/3021/3434/files/7a44c83f-42a7-4977-9ac5-93066cb47293.jpg?v=1792612022'" alt="Գործնական վարում" loading="lazy"><span>ԳՈՐԾՆԱԿԱՆ</span></div><div class="course-info"><h3>Գործնական դասեր</h3><p>Ամրապնդեք ձեր վարելու հմտությունները գործնական պարապմունքներով և ավելի վստահ զգացեք ձեզ ճանապարհին։ 1 դասի արժեքը՝ 5 000 դրամ։</p><div class="course-bottom"><strong>5 000 ֏ <small class="font-normal text-gray-500">/ դաս</small></strong><a href="#contact" aria-label="Հարցնել գործնական դասերի մասին"><i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="online-tests" class="section-pad bg-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+        <span class="eyebrow">ԱՌՑԱՆՑ ՈՒՍՈՒՑՈՒՄ</span>
+        <h2 class="section-title mt-3 mb-3">Պատրաստվիր ՀՀ երթևեկության կանոնների թեստերով</h2>
+        <p class="section-lead">Անցեք 63 ուսումնական թեստերից մեկը․ յուրաքանչյուր թեստում կա 20 հարց։ Կարող եք նաև ուսումնասիրել 10 թեմատիկ բաժինները։</p>
+        <a href="https://olimpiaautoschool.com/lang/ha/test.html#test-list" target="_blank" rel="noopener noreferrer" class="btn-main mt-5">Բացել թեստերը առանձին <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+      <div class="online-test-frame-wrap reveal">
+        <iframe class="online-test-frame" src="https://olimpiaautoschool.com/lang/ha/test.html#test-list" title="OLIMPIA-ի ՀՀ երթևեկության կանոնների առցանց թեստեր" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
     </div>
   </section>
