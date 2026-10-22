@@ -95,9 +95,9 @@
     .course-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:17px; }
     .course-card { overflow:hidden; border:1px solid #E8ECF1; border-radius:19px; background:white; box-shadow:0 8px 25px rgba(11,31,58,.06); transition:transform .25s,box-shadow .25s; }
     .course-card:hover { transform:translateY(-6px); box-shadow:0 20px 38px rgba(11,31,58,.12); }
-    .course-image { position:relative; height:170px; overflow:hidden; background:#E6EAF0; }
-    .course-image img { width:100%; height:100%; object-fit:cover; transition:transform .45s; }
-    .course-card:hover .course-image img { transform:scale(1.07); }
+    .course-image { position:relative; height:190px; display:grid; place-items:center; overflow:hidden; background:linear-gradient(135deg,#E8EDF3,#F9FAFB); }
+    .course-image img { width:100%; height:100%; padding:8px; object-fit:contain; transition:transform .45s; }
+    .course-card:hover .course-image img { transform:scale(1.03); }
     .course-image span { position:absolute; top:12px; left:12px; padding:7px 10px; border-radius:999px; color:var(--navy); background:var(--gold); font-size:9px; font-weight:800; }
     .course-info { padding:17px; }
     .course-info h3 { min-height:43px; margin:0 0 7px; color:var(--navy); font-size:15px; font-weight:800; line-height:1.4; }
